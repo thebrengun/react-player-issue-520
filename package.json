@@ -1,10 +1,12 @@
 {
   "name": "react-player-issue-520",
   "version": "0.1.0",
+  "homepage": "https://thebrengun.github.io/react-player-issue-520/",
   "private": true,
   "dependencies": {
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "react-player": "^1.7.0"
   },
   "devDependencies": {
     "react-scripts": "2.1.1"
