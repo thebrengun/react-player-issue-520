@@ -2,8 +2,8 @@ Demonstrates an issue where certain videos will cause the React Player to stop c
 
 [Demo](https://thebrengun.github.io/react-player-issue-520/)
 
-##Chrome:
-###Version 70.0.3538.110
+## Chrome:
+### Version 70.0.3538.110
 
 - 1st Video Loads and autoplays if playing is true as expected.
 - 2nd Video Loads and autoplays but without firing onPlaying event.
@@ -11,8 +11,8 @@ Demonstrates an issue where certain videos will cause the React Player to stop c
 - Interacting with the Vimeo player regains expected functionality.
 - Logged to console: nothing
 
-##Firefox
-###Version 63.0.3
+## Firefox
+### Version 63.0.3
 
 - 1st Video Loads and autoplays if playing is true as expected.
 - 2nd Video Loads and autoplays but without firing onPlaying event.
@@ -20,8 +20,8 @@ Demonstrates an issue where certain videos will cause the React Player to stop c
 - Interacting with the Vimeo player regains expected functionality.
 - Logged to console: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable - player.js:2
 
-##Safari
-###Version 12.0.1
+## Safari
+### Version 12.0.1
 
 - 1st Video Loads and autoplays if playing is true as expected.
 - 2nd Video Loads but does not autoplay even if playing is true.
