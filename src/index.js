@@ -11,23 +11,23 @@ class App extends React.PureComponent {
 			videoIsPlaying: false,
 			videos: [
 				{
-					title: 'Restricted Embed 1', 
+					title: 'Video 1', 
 					vimeoId: '301926039'
 				},
-		    {
-		      title: "Restricted Embed 2",
-		      vimeoId: "85876630",
-		    },
-		    {
-					title: 'Restricted Embed 3', 
+					{
+					title: "Video 2",
+					vimeoId: "85876630",
+					},
+					{
+					title: 'Video 3', 
 					vimeoId: '301925886'
 				},
 				{
-					title: 'Embeddable Anywhere 1', 
+					title: 'Video 4', 
 					vimeoId: '301926457'
 				},
 				{
-					title: 'Embeddable Anywhere 2', 
+					title: 'Video 5', 
 					vimeoId: '301926243'
 				}
 			]
@@ -66,8 +66,21 @@ class App extends React.PureComponent {
 		const { title, vimeoId } = this.state.videos[this.state.active];
 		return (
 			<div>
-				<h1>React Player <a href="https://github.com/CookPete/react-player/issues/520" target="_blank" rel="noopener noreferrer">Issue #520</a></h1>
-				<p>Demonstrates an issue where certain videos will cause the React Player to stop controlling the video playback. When the second video begins playing, the play/pause button will cease to control the video. In Safari it continues to work though the second video does not seem to autoplay, despite the first video autoplaying just fine.</p>
+				<h1>
+					React Player Issue
+				</h1>
+				<p>Demonstrates a warning that breaks the player. If videos are 
+				clicked in rapid succession a warning is given: <strong>Player.js:268 ReactPlayer: the attempt to 
+				load <em>url</em> is being deferred until the player has loaded</strong>
+				</p>
+
+				<p>But this seems to permanently break the player. After being in this 
+				state, no other videos can be loaded unless the component unmounted 
+				and remounted. It looks like the <a href="https://github.com/CookPete/react-player/blob/9618272e6e4b518e493d3130b96dd2ebeb97b506/src/Player.js#L37" target="_blank" rel="noopener noreferrer">desired behavior</a> is 
+				for the new url to load once the player is ready but that 
+				doesn't happen.</p>
+
+				<p>Occurs in Chrome, Firefox, and Safari.</p>
 
 				<div className="row">
 					<div className="col">
@@ -121,37 +134,6 @@ class App extends React.PureComponent {
 									);
 								}
 							)}
-						</ul>
-					</div>
-					<div className="col">
-						<h2>Browser Observations</h2>
-						<h3>Chrome:</h3>
-						<strong>Version 70.0.3538.110</strong>
-						<ul>
-							<li>1st Video Loads and autoplays if playing is true as expected.</li>
-							<li>2nd Video Loads and autoplays but without firing onPlaying event.</li>
-							<li>Video can no longer be controlled by playing prop.</li>
-							<li>Interacting with the Vimeo player regains expected functionality.</li>
-							<li>Logged to console: nothing</li>
-						</ul>
-
-						<h3>Firefox</h3>
-						<strong>Version 63.0.3</strong>
-						<ul>
-							<li>1st Video Loads and autoplays if playing is true as expected.</li>
-							<li>2nd Video Loads and autoplays but without firing onPlaying event.</li>
-							<li>Video can no longer be controlled by playing prop.</li>
-							<li>Interacting with the Vimeo player regains expected functionality.</li>
-							<li>Logged to console: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable - player.js:2</li>
-						</ul>
-
-						<h3>Safari</h3>
-						<strong>Version 12.0.1</strong>
-						<ul>
-							<li>1st Video Loads and autoplays if playing is true as expected.</li>
-							<li>2nd Video Loads but does not autoplay even if playing is true.</li>
-							<li>Video can be controlled by playing prop.</li>
-							<li>Logged to console: Successfuly preconnected to https://f.vimeocdn.com/</li>
 						</ul>
 					</div>
 				</div>
